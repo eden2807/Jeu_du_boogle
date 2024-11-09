@@ -11,6 +11,6 @@ namespace Jeu_du_boogle
         // test dé
         // ghktdfy
 
-        // modif dé test eden 
+        // modif dé test e
     }
 }
