@@ -15,7 +15,6 @@ namespace Jeu_du_boogle
         private int a = 0;
         // a représente un entier
 
-
         // modif dé test eden 
     }
 }
