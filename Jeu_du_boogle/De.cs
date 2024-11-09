@@ -11,6 +11,7 @@ namespace Jeu_du_boogle
         // test dé
         // ghktdfy
 
+        // modif dé test e
         private int a = 0;
         // a représente un entier
 
