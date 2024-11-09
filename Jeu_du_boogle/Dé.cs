@@ -9,5 +9,6 @@ namespace Jeu_du_boogle
     public class Dé
     {
 
+
     }
 }
