@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jeu_du_boogle
 {
-    public class Dé
+    public class De
     {
         // test dé
         // ghktdfy
