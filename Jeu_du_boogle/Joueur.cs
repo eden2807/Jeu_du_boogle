@@ -8,6 +8,6 @@ namespace Jeu_du_boogle
 {
     public class Joueur
     {
-        public string Nom;
+        private string nom;
     }
 }
