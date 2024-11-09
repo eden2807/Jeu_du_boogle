@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Jeu_du_boogle
 {
-    public static class Program
+    public static class Jeu
     {
         public static void Main(string[] args)
         {
