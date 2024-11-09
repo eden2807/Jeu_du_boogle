@@ -27,15 +27,15 @@ namespace Jeu_du_boogle
         // Constructeur avec paramètres
         public Joueur(string nom, int score, int nbMotsTrouves)
         {
-            this.nom = nom;
-            this.score = score;
-            this.nbMotsTrouves = nbMotsTrouves;
+            
         }
 
         // Constructeur par clônage
         public Joueur(Joueur g)
         {
-
+            this.nom = g.nom;
+            this.score = g.score;
+            this.nbMotsTrouves = g.nbMotsTrouves;
         }
 
         #endregion
