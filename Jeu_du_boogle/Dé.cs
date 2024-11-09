@@ -9,6 +9,7 @@ namespace Jeu_du_boogle
     public class Dé
     {
         // test dé
+        // ghktdfy
 
         // modif dé test eden 
     }
