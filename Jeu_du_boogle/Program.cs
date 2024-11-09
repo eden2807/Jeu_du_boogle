@@ -6,17 +6,11 @@ using System.Windows.Forms;
 
 namespace Jeu_du_boogle
 {
-    internal static class Program
+    public static class Program
     {
-        /// <summary>
-        /// Point d'entrée principal de l'application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        public static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
         }
     }
 }
