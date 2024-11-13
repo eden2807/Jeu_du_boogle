@@ -76,7 +76,26 @@ namespace Jeu_du_boogle
 
         public bool Contain(string mot)
         {
-            return this.motsTrouves.Contains(mot);
+            return this.motsTrouves.Contains(mot.ToUpper());
+        }
+
+        public void Add_Mot(string mot)
+        {
+            this.motsTrouves.Add(mot.ToUpper());
+        }
+
+        public string toString()
+        {
+            string s = "Nom : " + this.nom + "\n"
+                     + "Score : " + this.score + "\n"
+                     + "Mots trouvés : " + "\n";
+
+            for (int i = 0; i < this.motsTrouves.Count; i++)
+            {
+                s += this.motsTrouves[i].ToUpper() + "\n";
+            }
+
+            return s;
         }
 
         #endregion

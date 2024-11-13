@@ -15,7 +15,7 @@ namespace Jeu_du_boogle
             // Choix de la langue //
             #region Langue
 
-            Console.WriteLine("---[ BIENVENUE AU JEU DU BOOGLE ! ]---\n");
+            Console.WriteLine("---[ BIENVENUE AU JEU DU BOGGLE ! ]---\n");
 
             Console.WriteLine("Veuillez sélectionner la langue :");
             Console.WriteLine("\t Français : F");
@@ -52,21 +52,27 @@ namespace Jeu_du_boogle
             #endregion
 
 
-//--------------------[ Les parties du jeu ]--------------------//
+//--------------------[ Déroulement du jeu ]--------------------//
 
             List<string> listeMots = new List<string>();
 
-            listeMots.Add("Coucou");
-            listeMots.Add("Bonjour");
-            listeMots.Add("Aucune");
-            listeMots.Add("Idée");
-
-            Console.WriteLine(listeMots.Count);
-            listeMots.Add("Salut");
+            listeMots.Add("COUCOU");
+            listeMots.Add("BONJOUR");
+            listeMots.Add("SALUT");
+            listeMots.Add("LOL");
             Console.WriteLine(listeMots.Count);
 
             joueur1.MotsTrouves = listeMots;
+            Console.WriteLine(listeMots[0]);
+            Console.WriteLine(joueur1.Contain("COUCOU"));
             Console.WriteLine(joueur1.Contain("Coucou"));
+
+            joueur1.Add_Mot("HellO");
+            Console.WriteLine(joueur1.MotsTrouves[4]);
+            Console.WriteLine(joueur1.Contain("Hello"));
+            Console.WriteLine();
+
+            Console.WriteLine(joueur1.toString());
         }
     }
 }
