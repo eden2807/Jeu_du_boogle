@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Jeu_du_boogle
 {
-    internal class Plateau
+    public class Plateau
     {
+
     }
 }
