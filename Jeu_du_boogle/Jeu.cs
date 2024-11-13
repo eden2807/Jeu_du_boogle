@@ -46,12 +46,27 @@ namespace Jeu_du_boogle
             // Pseudos des joueurs //
             #region Pseudos
 
+            Joueur joueur1 = new Joueur("toto", 0, null);
+            Joueur joueur2 = new Joueur("toto2", 0, null);
+
             #endregion
 
 
 //--------------------[ Les parties du jeu ]--------------------//
 
+            List<string> listeMots = new List<string>();
 
+            listeMots.Add("Coucou");
+            listeMots.Add("Bonjour");
+            listeMots.Add("Aucune");
+            listeMots.Add("Idée");
+
+            Console.WriteLine(listeMots.Count);
+            listeMots.Add("Salut");
+            Console.WriteLine(listeMots.Count);
+
+            joueur1.MotsTrouves = listeMots;
+            Console.WriteLine(joueur1.Contain("Coucou"));
         }
     }
 }

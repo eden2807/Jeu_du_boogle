@@ -14,7 +14,7 @@ namespace Jeu_du_boogle
 
         private string nom;
         private int score;
-        private int nbMotsTrouves;
+        private List<string> motsTrouves;
 
         #endregion
 
@@ -26,19 +26,19 @@ namespace Jeu_du_boogle
         public Joueur() { }
 
         // Constructeur avec paramètres
-        public Joueur(string nom, int score, int nbMotsTrouves)
+        public Joueur(string nom, int score, List<string> motsTrouves)
         {
-            this.nom = nom;
+            if (nom != null) this.nom = nom;
             this.score = score;
-            this.nbMotsTrouves = nbMotsTrouves;
+            this.motsTrouves = motsTrouves;
         }
 
         // Constructeur par clônage
         public Joueur(Joueur g)
         {
-            this.nom = g.nom;
+            if (nom != null) this.nom = g.nom;
             this.score = g.score;
-            this.nbMotsTrouves = g.nbMotsTrouves;
+            this.motsTrouves = g.motsTrouves;
         }
 
         #endregion
@@ -47,11 +47,37 @@ namespace Jeu_du_boogle
         //----[ Propriétés ]----//
         #region Propriétés
 
+        public string Nom
+        {
+            get { return this.nom; }
+        }
+
+        public int Score
+        {
+            get { return this.score; }
+        }
+
+        public int NbMotsTrouves
+        {
+            get { return this.motsTrouves.Count; }
+        }
+
+        public List<string> MotsTrouves
+        {
+            get { return this.motsTrouves; }
+            set { this.motsTrouves = value; }
+        }
+
         #endregion
 
 
         //-----[ Méthodes ]-----//
         #region Méthodes
+
+        public bool Contain(string mot)
+        {
+            return this.motsTrouves.Contains(mot);
+        }
 
         #endregion
     }
