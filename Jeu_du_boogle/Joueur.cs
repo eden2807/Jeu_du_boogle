@@ -74,6 +74,11 @@ namespace Jeu_du_boogle
         //-----[ Méthodes ]-----//
         #region Méthodes
 
+        /// <summary>
+        /// Teste si "mot" appartient aux mots trouvés par le joueur
+        /// </summary>
+        /// <param name="mot"></param>
+        /// <returns></returns>
         public bool Contain(string mot)
         {
             return this.motsTrouves.Contains(mot.ToUpper());

@@ -52,8 +52,11 @@ namespace Jeu_du_boogle
             #endregion
 
 
-//--------------------[ Déroulement du jeu ]--------------------//
+            //--------------------[ Déroulement du jeu ]--------------------//
 
+            // Tests classe JOUEUR //
+
+            /*
             List<string> listeMots = new List<string>();
 
             listeMots.Add("COUCOU");
@@ -73,6 +76,13 @@ namespace Jeu_du_boogle
             Console.WriteLine();
 
             Console.WriteLine(joueur1.toString());
+            */
+
+            // Tests classe DE //
+
+            De de = new De();
+            Dictionary<char, int[]> testDict = de.LettresDictionnaire();
+            Console.WriteLine(de.AfficherDictionnaire(testDict));
         }
     }
 }
