@@ -162,6 +162,31 @@ namespace Jeu_du_boogle
             return str;
         }
 
+        public Dictionary<char, int> charger_occurences_lettres()
+        {
+
+            Dictionary<char, int> Lettre_Occurrence = new Dictionary<char, int>();
+            string[] tab_ligne_occurence = new string[2];
+            string[] lignes_fichier = File.ReadAllLines(this.lettresTxt);
+            char key;
+            int value;
+            for(int i =0; i < 26; i++)
+            {
+                tab_ligne_occurence[0] = lignes_fichier[i].Split(';')[0];
+                tab_ligne_occurence[1] = lignes_fichier[i].Split(';')[2];
+
+                key = char.Parse(tab_ligne_occurence[0]);
+                value = int.Parse(tab_ligne_occurence[1]);
+
+                Lettre_Occurrence.Add(key, value);
+
+                tab_ligne_occurence[0] = "";
+                tab_ligne_occurence[1] = "";
+            }
+
+            return Lettre_Occurrence;
+        }
+
         #endregion
     }
 }

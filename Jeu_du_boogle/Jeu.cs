@@ -83,6 +83,8 @@ namespace Jeu_du_boogle
             De de = new De();
             Dictionary<char, int[]> testDict = de.LettresDictionnaire();
             Console.WriteLine(de.AfficherDictionnaire(testDict));
+            Dictionary <char, int> dict_occurence = de.charger_occurences_lettres();
+            Console.Read(); 
         }
     }
 }
