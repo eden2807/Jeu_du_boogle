@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
 
 namespace Jeu_du_boogle
 {
@@ -17,6 +19,8 @@ namespace Jeu_du_boogle
         char lettreVisible;
         string lettresTxt = "Lettres.txt";
 
+        // Constantes
+        int nombreFaces = 6;
         #endregion
 
         // Réservation de la place en mémoire.
@@ -31,6 +35,7 @@ namespace Jeu_du_boogle
         // Constructeur naturel
         public De() 
         {
+            
             // charge le dictionnaire contenant les lettres en clé et le nombre d'occurence de celles-ci en valeur
             if(dict_occurence == null)
                 dict_occurence = charger_occurences_lettres();
@@ -38,10 +43,13 @@ namespace Jeu_du_boogle
             // on va selectionner aléatoirement une lettre dans le dico ET le mettre à jour
             char c;
 
-            // le dé a 6 faces, on génère donc une chaîne de 6 caractères aléatoires
-            for (int i = 0; i < 6; i++)
+            lettresDe = new char[nombreFaces];
+
+            // le dé a 6 faces, on assigne donc une lettre par face
+            for (int i = 0; i < nombreFaces; i++)
             {
                 c = select_char_aleat_and_update_dict(dict_occurence);
+
                 lettresDe[i] += c; 
             }
         }
@@ -206,6 +214,14 @@ namespace Jeu_du_boogle
 
             // renvoyer le caractère ainsi séléctionné
             return c;
+        }
+
+        public void Lance(Random r)
+        {
+            int indice_face = r.Next(1, nombreFaces);
+
+            this.lettreVisible = lettresDe[indice_face];
+            
         }
 
         #endregion

@@ -6,11 +6,14 @@ using System.Windows.Forms;
 
 namespace Jeu_du_boogle
 {
-    internal class Jeu
+    public class Jeu
     {
+        
         public static void Main(string[] args)
         {
-//--------------------[ Configuration initiale ]--------------------//
+            //--------------------[ Configuration initiale ]--------------------//
+            Random random;
+            random = new Random();
 
             // Choix de la langue //
             #region Langue
@@ -82,11 +85,12 @@ namespace Jeu_du_boogle
             */
 
             // Tests classe DE //
-
             De de = new De();
-
             De de2 = new De();
 
+            de.Lance(random);
+            //char valeurFace = 
+            
             Dictionary<char, int[]> testDict = de.LettresDictionnaire();
             Console.WriteLine(de.AfficherDictionnaire(testDict));
         }
