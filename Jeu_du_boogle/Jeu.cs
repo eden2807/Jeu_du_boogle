@@ -21,11 +21,14 @@ namespace Jeu_du_boogle
             Console.WriteLine("\t Français : F");
             Console.WriteLine("\t English : E");
 
-            string langue;
+            // POUR TEST SEULEMENT - A VIRER ET DECOMMENTER LA LIGNE DU DESSOUS!
+            string langue = "F";
+            // string langue = "";
             do
             {
                 Console.Write("---> ");
-                langue = Console.ReadLine();
+                // A DECOMMENTER - TEST SEULEMENT
+                //langue = Console.ReadLine();
                 if (langue != "E" && langue != "F") Console.WriteLine("Le caractère saisi est invalide. Veuillez recommencer.");
             }
             while (langue != "E" && langue != "F");
@@ -81,10 +84,11 @@ namespace Jeu_du_boogle
             // Tests classe DE //
 
             De de = new De();
+
+            De de2 = new De();
+
             Dictionary<char, int[]> testDict = de.LettresDictionnaire();
             Console.WriteLine(de.AfficherDictionnaire(testDict));
-            Dictionary <char, int> dict_occurence = de.charger_occurences_lettres();
-            Console.Read(); 
         }
     }
 }

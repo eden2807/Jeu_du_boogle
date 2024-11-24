@@ -11,16 +11,19 @@ namespace Jeu_du_boogle
 {
     public class De
     {
-
         //-----[ Attributs ]-----//
         #region Attributs
-
-        string lettresDe;
+        char[] lettresDe;
         char lettreVisible;
         string lettresTxt = "Lettres.txt";
 
         #endregion
 
+        // Réservation de la place en mémoire.
+
+        public static Dictionary<char, int> dict_occurence;
+
+        private Random random = new Random();
 
         //---[ Constructeurs ]---//
         #region Constructeurs
@@ -28,48 +31,26 @@ namespace Jeu_du_boogle
         // Constructeur naturel
         public De() 
         {
-            Random nbAlea = new Random();
+            // charge le dictionnaire contenant les lettres en clé et le nombre d'occurence de celles-ci en valeur
+            if(dict_occurence == null)
+                dict_occurence = charger_occurences_lettres();
+
+            // on va selectionner aléatoirement une lettre dans le dico ET le mettre à jour
+            char c;
 
             // le dé a 6 faces, on génère donc une chaîne de 6 caractères aléatoires
             for (int i = 0; i < 6; i++)
             {
-                nbAlea.Next(1, 101); // on choisit un nombre au hasard entre 1 et 100
-                //this.lettresDe += ???;
+                c = select_char_aleat_and_update_dict(dict_occurence);
+                lettresDe[i] += c; 
             }
-
-            this.lettresDe = "ABCDEF"; // temporaire
-
-            this.lettreVisible = 'A'; // temporaire
-
-            /*
-            if (lettresDe.Length != 6)
-                throw new ArgumentException("Le dé doit avoir 6 lettres exactement");
-            // si la taille de lettres est différente de 6, on sort.
-
-            for (int i = 0; i < lettresDe.Length; i++)
-            {
-                char dumpchar = lettresDe[0][i];
-                for(int j = 0; j < lettresDe[i].Length; j++)
-                {
-                    if (lettresDe[i][j] == dumpchar) // on vérifie que chaque caractère est unique à la main.
-                    {
-                        throw new ArgumentException("les lettres ne sont pas uniques !"); 
-                    }
-                }
-            }
-
-            this.lettres = lettres;
-            this.face = 0;
-            */
         }
-
         #endregion
-
 
         //----[ Propriétés ]----//
         #region Propriétés
 
-        public string LettresDe
+        public char[] LettresDe
         {
             get { return this.lettresDe; }
         }
@@ -99,6 +80,11 @@ namespace Jeu_du_boogle
         /// ...
         /// La clé < Z > de dict correspond au tableau : [ 10 ; 1 ; 100 ]
         /// </ returns >
+        /// 
+
+       
+
+
         public Dictionary<char, int[]> LettresDictionnaire()
         {
             Dictionary<char, int[]> dict = new Dictionary<char, int[]>();
@@ -165,7 +151,7 @@ namespace Jeu_du_boogle
         public Dictionary<char, int> charger_occurences_lettres()
         {
 
-            Dictionary<char, int> Lettre_Occurrence = new Dictionary<char, int>();
+            Dictionary<char, int> dic_occurences_lettres = new Dictionary<char, int>();
             string[] tab_ligne_occurence = new string[2];
             string[] lignes_fichier = File.ReadAllLines(this.lettresTxt);
             char key;
@@ -178,13 +164,48 @@ namespace Jeu_du_boogle
                 key = char.Parse(tab_ligne_occurence[0]);
                 value = int.Parse(tab_ligne_occurence[1]);
 
-                Lettre_Occurrence.Add(key, value);
+                dic_occurences_lettres.Add(key, value);
 
                 tab_ligne_occurence[0] = "";
                 tab_ligne_occurence[1] = "";
             }
 
-            return Lettre_Occurrence;
+            return dic_occurences_lettres;
+        }
+
+
+        private char select_char_aleat_and_update_dict(Dictionary<char, int> dic_occurences)
+        {
+            char c = 'c';
+            
+            // accéder aux clés du dictionnaire7
+            int nombre_totale_clés = dict_occurence.Keys.Count;
+            int indice_clé_selectionnee = 0;
+            int nombre_occ_lettre;
+
+            // Séléctionner aléatoirement une des clés
+            indice_clé_selectionnee = random.Next(1, nombre_totale_clés);
+
+            // liste des caractères du dico utilisés comme clés
+            // La liste permet d'obtenir la valeur réelle de la clé grâce à l'indice 
+            List<char> liste_clés = dic_occurences.Keys.ToList();
+
+            // recuperer le char associé à cette clé
+            c = liste_clés[indice_clé_selectionnee];
+
+            // mettre le nombre d'occurence de lettre restant à jour dans le dictionnaire
+            nombre_occ_lettre = dict_occurence[c];
+
+            // Si il n'y a plus d'occurence dispo pour cette lettre : enlever la clé et occurence du dico
+            if (nombre_occ_lettre == 1)
+            {
+                dict_occurence.Remove(c);
+            }
+
+            nombre_occ_lettre -= 1;
+
+            // renvoyer le caractère ainsi séléctionné
+            return c;
         }
 
         #endregion
